@@ -5,3 +5,13 @@
 require File.expand_path('../config/application', __FILE__)
 
 Karmaville::Application.load_tasks
+
+
+namespace :db do
+  task :points => :environment do
+    n = 0
+    User.all.each do |user|
+      user.update_attribute(:points, user.total_karma)
+    end
+  end
+end

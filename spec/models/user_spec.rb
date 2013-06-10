@@ -26,6 +26,10 @@ describe User do
       user_low   = create(:user_with_karma, :total => 200, :points => 2)
       user_high  = create(:user_with_karma, :total => 800, :points => 2)
 
+      user_med.update_karma
+      user_low.update_karma
+      user_high.update_karma
+
       User.by_karma.should eq [user_high, user_med, user_low]
     end
   end
